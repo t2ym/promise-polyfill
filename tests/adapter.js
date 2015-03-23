@@ -1,4 +1,7 @@
-var Promise = require('../Promise');
+var Promise = require('../Promise')(function (fn) {
+  return setTimeout(fn, 0);
+});
+
 module.exports = {
 	resolved: Promise.resolve,
 	rejected: Promise.rejected,
