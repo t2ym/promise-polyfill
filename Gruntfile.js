@@ -20,7 +20,7 @@ module.exports = function(grunt) {
       },
       dist: {
         files: {
-          'Promise.min.closure.js': ['Promise.js']
+          'Promise.min.js': ['Promise.js']
         }
       }
     },
@@ -36,5 +36,5 @@ module.exports = function(grunt) {
 	grunt.loadNpmTasks('grunt-closurecompiler');
 	grunt.loadNpmTasks('grunt-bytesize');
 
-	grunt.registerTask('build', ['uglify', 'closurecompiler', 'bytesize']);
+	grunt.registerTask('build', ['closurecompiler', 'bytesize']);
 };
