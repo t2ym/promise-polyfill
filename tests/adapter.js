@@ -1,4 +1,8 @@
-var Promise = require('../Promise');
+var Promise = require('../Promise')(function (fn) {
+  return setTimeout(fn, 0);
+});
+var DefaultGlobalPromise;
+
 module.exports = {
 	resolved: Promise.resolve,
 	rejected: Promise.rejected,
@@ -10,5 +14,13 @@ module.exports = {
 		});
 		obj.promise = prom;
 		return obj;
-	}
-}
+	},
+  defineGlobalPromise: function(globalScope) {
+    DefaultGlobalPromise = globalScope.Promise;
+    globalScope.Promise = Promise;
+    globalScope.assert = require('assert');
+  },
+  removeGlobalPromise: function(globalScope) {
+    globalScope.Promise = DefaultGlobalPromise;
+  }
+};
