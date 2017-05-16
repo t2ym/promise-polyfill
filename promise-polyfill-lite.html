@@ -11,11 +11,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 <script>
 if (!window.Promise) {
   var asap;
-  if (window.Polymer) {
-    asap = Polymer.base.async;
-  } else {
-    asap = setTimeout;
-  }
+  asap = setTimeout;
 
   window.Promise = MakePromise(asap);
 }
